@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha -R spec --check-leaks tests/*_test.js",
     "nyan": "mocha -R nyan --check-leaks tests/*_test.js",
-    "coverage": "istanbul cover _mocha -- -R spec tests/*_test.js"
+    "coverage": "istanbul cover _mocha -- -R spec tests/*_test.js",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- tests/*_test.js && cat ./coverage/lcov.info | coveralls"
   },
   "main": "src/index.js",
   "engine": "node >= 0.10.0",
@@ -32,11 +33,12 @@
     "redis": "2.6.3"
   },
   "devDependencies": {
-    "mocha": "3.1.2",
+    "boris": "0.12.6",
+    "coveralls": "2.11.15",
     "expect": "1.20.2",
     "istanbul": "0.4.5",
+    "mocha": "3.1.2",
     "random-seed": "0.3.0",
-    "boris": "0.12.6",
     "temp": "0.8.3"
   },
   "license": "MIT"
