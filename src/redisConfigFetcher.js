@@ -35,8 +35,8 @@ function RedisConfigFetcher(host, port, config) {
 
   var redis_config = {
     connect_timeout: config.timeout, // Don't connect to down things
-    max_attempts:    1,              // No retry logic, since we handle that ourselves
-    no_ready_check:  1               // Don't do a ready check, since we already do that
+    no_ready_check:  1,              // Don't do a ready check, since we already do that
+    retry_strategy: function () {}
   };
 
   var client = this.client = config._testClient || redis.createClient(port, host, redis_config);

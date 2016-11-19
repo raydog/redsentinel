@@ -48,7 +48,7 @@ function RedisWatcher(host, port, config) {
 
   var redis_config = {
     connect_timeout: config.timeout,
-    max_attempts:    1
+    retry_strategy: function () {}
   };
 
   // Hook ourselves into a redis client:
