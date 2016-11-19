@@ -219,7 +219,7 @@ RedisSentinel.prototype._handleErrorAndReconnect = function _handleErrorAndRecon
 
 RedisSentinel.prototype._dedupeSentinels = function _dedupeSentinels() {
   // Dedupe the list based on "host(lowercase):port":
-  this.sentinels = util._.uniq(this.sentinels, function (conf) {
+  this.sentinels = util._.uniqBy(this.sentinels, function (conf) {
     return conf.host.toLowerCase() + ":" + conf.port;
   });
 };
