@@ -77,7 +77,7 @@ util.inherits(RedisWatcher, events.EventEmitter);
 RedisWatcher.prototype.kill = function (err) {
   if (this.finalized) { return; }
   this.finalized = true;
-  this.client.end();
+  this.client.end(false);
   this.client.removeAllListeners();
   clearTimeout(this.timeout);
   this.timeout = undefined;
