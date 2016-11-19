@@ -1,8 +1,4 @@
-# _NOT MAINTAINED ANYMORE_
-
-
-
-simple-sentinel [![Build Status](https://travis-ci.org/Vungle/simple-sentinel.svg?branch=master)](https://travis-ci.org/Vungle/simple-sentinel)
+RedSentinel [![Build Status](https://travis-ci.org/raydog/redsentinel.svg?branch=master)](https://travis-ci.org/raydog/redsentinel)
 ===============
 
 A stable, and easy to use redis-sentinel client for Node.js. Features include:
@@ -15,13 +11,13 @@ A stable, and easy to use redis-sentinel client for Node.js. Features include:
 ### Installing
 
 ```sh
-npm install --save simple-sentinel
+npm install --save redsentinel
 ```
 
 ### Sample Code
 
 ```javascript
-var RedisSentinel = require('simple-sentinel');
+var RedSentinel = require('redsentinel');
 
 // Put all sentinel servers in here. A random one will be used:
 var sentinels = [
@@ -38,7 +34,7 @@ var options = {
 };
 
 // Create a sentinel object to track the given Replicas:
-var sentinel = new RedisSentinel(sentinels, options);
+var sentinel = new RedSentinel(sentinels, options);
 
 // Keep track of the Masters here:
 var masters = {
@@ -56,9 +52,9 @@ sentinel.on('change', function (name, replica) {
 
 ### API
 
-#### RedisSentinel
+#### RedSentinel
 
-This object is used to connect to a redis-sentinel cluster. It is an EventEmitter, and will notify you about outages or failovers as they happen.
+This object is used to connect to a redis-sentinel cluster. Its constructor is the main thing that's exported. It is an EventEmitter, and will notify you about outages or failovers as they happen.
 
 ##### Constructor: (sentinels, config)
 

@@ -1,7 +1,7 @@
 ## Changelog
 
 ### 1.0.0 ()
- - Forked to `redsentinel` due to the package not being maintained.
+ - Forked to `red-sentinel` due to the package not being maintained.
  - Updated dependencies to latest.
 
 ### 0.2.0 (*2015 Jul 2*)
