@@ -1,7 +1,7 @@
 {
-  "name": "simple-sentinel",
-  "version": "0.2.0",
-  "description": "An easy to use redis-sentinel client for Node.js",
+  "name": "redsentinel",
+  "version": "1.0.0-pre",
+  "description": "An easy-to-use redis sentinel client that reacts to outages quickly",
   "contributors": [
     "Raymond Myers <raydog87@gmail.com>",
     "Chrissy Donovan <christine.n.donovan@gmail.com>"
@@ -12,18 +12,19 @@
     "coverage": "istanbul cover _mocha -- -R spec tests/*_test.js"
   },
   "main": "src/index.js",
-  "engine": "node >= 0.8.0",
+  "engine": "node >= 0.10.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vungle/simple-sentinel"
+    "url": "https://github.com/raydog/redsentinel"
   },
   "bugs": {
-    "url": "https://github.com/Vungle/simple-sentinel/issues"
+    "url": "https://github.com/raydog/redsentinel/issues"
   },
   "keywords": [
     "redis",
     "sentinel",
-    "redis-sentinel"
+    "redis-sentinel",
+    "redsentinel"
   ],
   "dependencies": {
     "async": "1.3.0",
