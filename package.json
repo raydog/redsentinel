@@ -1,6 +1,6 @@
 {
   "name": "redsentinel",
-  "version": "1.0.0-pre",
+  "version": "1.0.0",
   "description": "An easy-to-use redis sentinel client that reacts to outages quickly",
   "contributors": [
     "Raymond Myers <raydog87@gmail.com>",
