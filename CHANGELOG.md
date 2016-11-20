@@ -1,8 +1,10 @@
 ## Changelog
 
-### 1.0.0 ()
- - Forked to `red-sentinel` due to the package not being maintained.
+### 1.0.0 (*2016 Nov 20*)
+ - Forked to `redsentinel` due to the package not being maintained.
  - Updated dependencies to latest.
+ - Fixed a few bugs due to the version bump.
+ - Dropped Node 0.8 support.
 
 ### 0.2.0 (*2015 Jul 2*)
  - Added API to get connection info without connecting.
