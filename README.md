@@ -8,6 +8,8 @@ A stable, and easy to use redis-sentinel client for Node.js. Features include:
  - Uses Sentinel's Pub/Sub commands for real-time config updates during failovers.
  - Uses Sentinel info to help dodge outages.
 
+Note: This is a fork of [Vungle/simple-sentinel](https://github.com/Vungle/simple-sentinel), since the original project seems to have been abandoned.
+
 ### Installing
 
 ```sh
