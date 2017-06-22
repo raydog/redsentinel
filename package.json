@@ -28,16 +28,16 @@
     "redsentinel"
   ],
   "dependencies": {
-    "async": "2.1.2",
-    "lodash": "4.17.2",
-    "redis": "2.6.3"
+    "async": "2.4.1",
+    "lodash": "4.17.4",
+    "redis": "2.7.1"
   },
   "devDependencies": {
     "boris": "0.12.6",
-    "coveralls": "2.11.15",
+    "coveralls": "2.13.1",
     "expect": "1.20.2",
     "istanbul": "0.4.5",
-    "mocha": "3.1.2",
+    "mocha": "3.4.2",
     "random-seed": "0.3.0",
     "temp": "0.8.3"
   },
