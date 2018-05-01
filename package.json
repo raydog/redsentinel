@@ -30,7 +30,7 @@
   "dependencies": {
     "async": "2.4.1",
     "lodash": "4.17.4",
-    "redis": "2.7.1"
+    "redis": "2.8.0"
   },
   "devDependencies": {
     "boris": "0.12.6",
