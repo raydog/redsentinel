@@ -9,8 +9,8 @@
   "scripts": {
     "test": "mocha -R spec --check-leaks tests/*_test.js",
     "nyan": "mocha -R nyan --check-leaks tests/*_test.js",
-    "coverage": "istanbul cover _mocha -- -R spec tests/*_test.js",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- tests/*_test.js && cat ./coverage/lcov.info | coveralls"
+    "coverage": "nyc npm test",
+    "coveralls": "npm run coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "main": "src/index.js",
   "engine": "node >= 0.10.0",
@@ -28,18 +28,18 @@
     "redsentinel"
   ],
   "dependencies": {
-    "async": "2.4.1",
-    "lodash": "4.17.4",
-    "redis": "2.8.0"
+    "async": "3.2.0",
+    "lodash": "4.17.21",
+    "redis": "3.1.2"
   },
   "devDependencies": {
-    "boris": "0.12.6",
-    "coveralls": "2.13.1",
-    "expect": "1.20.2",
-    "istanbul": "0.4.5",
-    "mocha": "3.4.2",
+    "boris": "0.13.2",
+    "coveralls": "3.1.0",
+    "expect": "26.6.2",
+    "mocha": "8.4.0",
+    "nyc": "15.1.0",
     "random-seed": "0.3.0",
-    "temp": "0.8.3"
+    "temp": "0.9.4"
   },
   "license": "MIT"
 }
