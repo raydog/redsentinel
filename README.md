@@ -1,4 +1,4 @@
-RedSentinel [![Build Status](https://travis-ci.org/raydog/redsentinel.svg?branch=master)](https://travis-ci.org/raydog/redsentinel) [![Coverage Status](https://coveralls.io/repos/github/raydog/redsentinel/badge.svg?branch=master)](https://coveralls.io/github/raydog/redsentinel?branch=master)
+RedSentinel [![Build Status](https://travis-ci.com/raydog/redsentinel.svg?branch=master)](https://travis-ci.com/raydog/redsentinel) [![Coverage Status](https://coveralls.io/repos/github/raydog/redsentinel/badge.svg?branch=master)](https://coveralls.io/github/raydog/redsentinel?branch=master)
 ===============
 
 A stable, and easy to use redis-sentinel client for Node.js. Features include:
