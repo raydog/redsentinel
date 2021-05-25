@@ -351,7 +351,7 @@ describe('RedisReplica', function () {
       it("returns an empty array when no slaves", function () {
         var repl = new RedisReplica("lol", makeCreateClient(), _conf);
         var res = repl.connectAllSlaves();
-        expect(res).toBeAn(Array);
+        expect(res).toBeInstanceOf(Array);
         expect(res.length).toBe(0);
       });
 
@@ -363,7 +363,7 @@ describe('RedisReplica', function () {
           {name: "lol", ip: "10.0.0.1", port: 6381, flags: ["slave", "s_down"]}
         ]);
         var res = repl.connectAllSlaves();
-        expect(res).toBeAn(Array);
+        expect(res).toBeInstanceOf(Array);
         expect(res.length).toBe(0);
       });
 
@@ -376,10 +376,9 @@ describe('RedisReplica', function () {
         ]);
         var res = repl.connectAllSlaves();
 
-        expect(res)
-          .toBeAn(Array)
-          .toContain("10.0.0.1:6379")
-          .toContain("10.0.0.1:6381");
+        expect(res).toBeInstanceOf(Array);
+        expect(res).toContain("10.0.0.1:6379");
+        expect(res).toContain("10.0.0.1:6381");
 
         expect(res.length).toBe(2);
       });
@@ -489,10 +488,9 @@ describe('RedisReplica', function () {
         ]);
         var res = repl.getAllSlaveConfigs();
 
-        expect(res)
-          .toBeAn(Array)
-          .toContain({ host: "10.0.0.1", port:6379 })
-          .toContain({ host: "10.0.0.1", port:6381 });
+        expect(res).toBeInstanceOf(Array);
+        expect(res).toContainEqual({ host: "10.0.0.1", port:6379 });
+        expect(res).toContainEqual({ host: "10.0.0.1", port:6381 });
 
         expect(res.length).toBe(2);
       });
@@ -511,15 +509,14 @@ describe('RedisReplica', function () {
 
       repl._loadMasterConfig({name: "lol", ip: "127.0.0.1", port: 6379, flags: ["master"]});
 
-      expect(repl.toString())
-        .toMatch(/RedisReplica/i)
-        .toMatch(/127\.0\.0\.1:6379 UP/);
+      
+      expect(repl.toString()).toMatch(/RedisReplica/i);
+      expect(repl.toString()).toMatch(/127\.0\.0\.1:6379 UP/);
 
       repl._loadMasterConfig({name: "lol", ip: "127.0.0.1", port: 6379, flags: ["master", "o_down"]});
 
-      expect(repl.toString())
-        .toMatch(/RedisReplica/i)
-        .toMatch(/127\.0\.0\.1:6379 DOWN/);
+      expect(repl.toString()).toMatch(/RedisReplica/i);
+      expect(repl.toString()).toMatch(/127\.0\.0\.1:6379 DOWN/);
     });
 
     it("works with slaves", function () {
@@ -530,11 +527,10 @@ describe('RedisReplica', function () {
         {name: "lol", ip: "10.0.0.1", port: 6381, flags: ["slave"]}
       ]);
 
-      expect(repl.toString())
-        .toMatch(/RedisReplica/i)
-        .toMatch(/10\.0\.0\.1:6379 UP/)
-        .toMatch(/10\.0\.0\.1:6380 DOWN/)
-        .toMatch(/10\.0\.0\.1:6381 UP/);
+      expect(repl.toString()).toMatch(/RedisReplica/i)
+      expect(repl.toString()).toMatch(/10\.0\.0\.1:6379 UP/)
+      expect(repl.toString()).toMatch(/10\.0\.0\.1:6380 DOWN/)
+      expect(repl.toString()).toMatch(/10\.0\.0\.1:6381 UP/);
     });
   });
 });

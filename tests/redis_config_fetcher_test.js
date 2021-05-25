@@ -77,7 +77,7 @@ describe("RedisConfigFetcher", function () {
         _testClient: client
       });
       rcf.on('error', function (err) {
-        expect(err).toExist();
+        expect(err).toBeTruthy();
         done();
       });
       client.emit('end');
@@ -93,9 +93,8 @@ describe("RedisConfigFetcher", function () {
       });
       rcf.on('error', function (err) {
 
-        expect(err.message)
-          .toMatch(/timed out/i)
-          .toMatch(/INFO/i);
+        expect(err.message).toMatch(/timed out/i);
+        expect(err.message).toMatch(/INFO/i);
 
         done();
       });
@@ -213,12 +212,11 @@ describe("RedisConfigFetcher", function () {
 
     it("parses flags as array", function () {
       var res = rcf._parseServerList("Master", [["name", "derp", "flags", "master,s_down,o_down", "thing", "blahblah"]]);
-      expect(res).toExist();
-      expect(res[0].flags)
-        .toBeAn(Array)
-        .toContain("master")
-        .toContain("s_down")
-        .toContain("o_down");
+      expect(res).toBeTruthy();
+      expect(res[0].flags).toBeInstanceOf(Array);
+      expect(res[0].flags).toContain("master");
+      expect(res[0].flags).toContain("s_down");
+      expect(res[0].flags).toContain("o_down");
       expect(last_log).toBe(null);
     });
 
@@ -227,21 +225,19 @@ describe("RedisConfigFetcher", function () {
         ["name", "herp", "ip", "127.0.0.1", "flags", "master,s_down,o_down"],
         ["name", "derp", "ip", "127.0.0.2", "flags", "master"]
       ]);
-      expect(res).toExist();
+      expect(res).toBeTruthy();
       expect(res[0].name).toBe("herp");
       expect(res[1].name).toBe("derp");
       expect(res[0].ip).toBe("127.0.0.1");
       expect(res[1].ip).toBe("127.0.0.2");
 
-      expect(res[0].flags)
-        .toBeAn(Array)
-        .toContain("master")
-        .toContain("s_down")
-        .toContain("o_down");
+      expect(res[0].flags).toBeInstanceOf(Array);
+      expect(res[0].flags).toContain("master");
+      expect(res[0].flags).toContain("s_down");
+      expect(res[0].flags).toContain("o_down");
 
-      expect(res[1].flags)
-        .toBeAn(Array)
-        .toContain("master");
+      expect(res[1].flags).toBeInstanceOf(Array);
+      expect(res[1].flags).toContain("master");
 
       expect(last_log).toBe(null);
     });
@@ -292,12 +288,11 @@ describe("RedisConfigFetcher", function () {
     it("works when everything is ok", function () {
       var res = rcf._buildLookup([{name: "lol", ip: "123.45.67.89"}, {name: "derp", ip: "98.76.54.32"}]);
 
-      expect(res)
-        .toExist()
-        .toBeAn(Object);
+      expect(res).toBeTruthy();
+      expect(res).toBeInstanceOf(Object);
 
-      expect(res.lol).toExist();
-      expect(res.derp).toExist();
+      expect(res.lol).toBeTruthy();
+      expect(res.derp).toBeTruthy();
       expect(res.lol.ip).toBe("123.45.67.89");
       expect(res.derp.ip).toBe("98.76.54.32");
 
@@ -320,11 +315,11 @@ describe("RedisConfigFetcher", function () {
       expect(master.name).toBe("foo");
       expect(master.ip).toBe("10.0.0.1");
       expect(master.port).toBe(6379);
-      expect(master.flags).toBeAn(Array);
-      expect(slaves).toBeAn(Array);
+      expect(master.flags).toBeInstanceOf(Array);
+      expect(slaves).toBeInstanceOf(Array);
       expect(slaves[0].ip).toBe("10.0.0.2");
       expect(slaves[0].port).toBe(6379);
-      expect(slaves[0].flags).toBeAn(Array);
+      expect(slaves[0].flags).toBeInstanceOf(Array);
     }
 
 
@@ -341,9 +336,8 @@ describe("RedisConfigFetcher", function () {
       });
 
       rcf.on('error', function (err) {
-        expect(err.message)
-          .toMatch(/timed out/i)
-          .toMatch(/sentinel masters/i);
+        expect(err.message).toMatch(/timed out/i);
+        expect(err.message).toMatch(/sentinel masters/i);
         done();
       });
 
@@ -373,9 +367,8 @@ describe("RedisConfigFetcher", function () {
       });
 
       rcf.on('error', function (err) {
-        expect(err.message)
-          .toMatch(/timed out/i)
-          .toMatch(/sentinel slaves foo/i);
+        expect(err.message).toMatch(/timed out/i);
+        expect(err.message).toMatch(/sentinel slaves foo/i);
         done();
       });
 

@@ -49,7 +49,7 @@ describe("RedisSentinel", function () {
     it("succeeds when everything is ok", function () {
       expect(function () {
         validate([{host: "10.0.0.1"}, {host: "10.0.0.2", port: 1234}]);
-      }).toNotThrow();
+      }).not.toThrow();
     });
   });
 
@@ -80,9 +80,8 @@ describe("RedisSentinel", function () {
       var default_val = s.options.outageRetryTimeout;
       s = new RedisSentinel([{host:"127.0.0.1", port: 6323}], conf);
 
-      expect(s.options.outageRetryTimeout)
-        .toBe(-1)
-        .toNotBe(default_val);
+      expect(s.options.outageRetryTimeout).toBe(-1);
+      expect(s.options.outageRetryTimeout).not.toBe(default_val);
     });
 
     it("will allow a client redis lib to be injected", function () {
@@ -102,16 +101,15 @@ describe("RedisSentinel", function () {
       function _equal(a, b) { return a.host === b.host && a.port === b.port; }
 
       expect(s.sentinels.length).toBe(2);
-      expect(s.sentinels)
-        .toContain({ host:"127.0.0.1", port: 26379 }, _equal)
-        .toContain({ host:"127.0.1.2", port: 6323 }, _equal);
+      expect(s.sentinels).toContainEqual({ host:"127.0.0.1", port: 26379 }, _equal);
+      expect(s.sentinels).toContainEqual({ host:"127.0.1.2", port: 6323 }, _equal);
     });
 
     it("works as both a constructor and a function call", function () {
       var s = new RedisSentinel([{host:"127.0.0.1", port: 6323}], {outageRetryTimeout: -1});
-      expect(s).toBeA(RedisSentinel);
+      expect(s).toBeInstanceOf(RedisSentinel);
       s = RedisSentinel([{host:"127.0.0.1", port: 6323}], {outageRetryTimeout: -1});
-      expect(s).toBeA(RedisSentinel);
+      expect(s).toBeInstanceOf(RedisSentinel);
     });
   });
 
@@ -375,7 +373,7 @@ describe("RedisSentinel", function () {
 
         sentinel = new RedisSentinel(s_list, s_conf);
         sentinel.on('error', function (err) {
-          expect(err).toBeAn(Error);
+          expect(err).toBeInstanceOf(Error);
           expect(err.message).toMatch(/could not connect/i);
           done();
         });
